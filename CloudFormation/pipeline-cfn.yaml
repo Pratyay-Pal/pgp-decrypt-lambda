@@ -1,9 +1,14 @@
 #Change values in Parameter section only. Leave the rest as it is.
 Parameters:
-  ArtifactStoreBucket:
+  ArtifactStoreBucketName:
     Type: String
-    Default: pgp-decrypt-lambda-cfn-pipeline-bucket
+    Default: pgp-decrypt-lambda-cfn-artifacts-bucket
     Description: Artifact store for Codepipeline.
+
+  PGPS3BucketName:
+    Type: String
+    Default: test-ecs-pgp
+    Description: S3 Bucket which stores the PGP files, from which the PGP Decryption Lambda will be triggered.
   
   SourceArtifactBucket:
     Type: String
@@ -19,6 +24,11 @@ Parameters:
     Type: String
     Default: infrastructure-cfn.yaml
     Description: Infrastruture as code. Must be YAML/JSON.
+
+  ECRRepositoryName:
+    Type: String
+    Default: decrypt-file
+    Description: ECR Repository containing the image for Lambda.
 
   #Make sure cloudformation.amazonaws.com and is present in Trusted entities for this Role.
   CFNRoleARN:
@@ -38,13 +48,29 @@ Parameters:
     Description: Name of stack which will be responsible for Infrastructure Deployment.
 
 Resources:
+  ArtifactS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref ArtifactStoreBucketName
+      VersioningConfiguration:
+        Status: Enabled
+    DeletionPolicy: Retain
+
+  PGPS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref PGPS3BucketName
+      VersioningConfiguration:
+        Status: Enabled
+    DeletionPolicy: Retain
+
   InfrastructureDeployment:
     Type: AWS::CodePipeline::Pipeline
     Properties:
       ArtifactStore:
-        Location: !Ref ArtifactStoreBucket
+        Location: !Ref ArtifactS3Bucket
         Type: S3
-      Name: pgp-decrypt-infrastructure-deployment
+      Name: pgp-decrypt-update-lambda-on-ecr-change-pipeline
       PipelineType: V2
       RoleArn: !Ref CFNRoleARN
       Stages:
@@ -55,12 +81,11 @@ Resources:
               ActionTypeId:
                 Category: Source
                 Owner: AWS
-                Provider: S3
+                Provider: ECR
                 Version: 1
               Configuration:
-                PollForSourceChanges: false
-                S3Bucket: !Ref SourceArtifactBucket
-                S3ObjectKey: !Ref SourceArtifact
+                RepositoryName: !Ref ECRRepositoryName
+                ImageTag: latest
               OutputArtifacts: 
                 - Name: SourceArtifact
         - Name: Deploy

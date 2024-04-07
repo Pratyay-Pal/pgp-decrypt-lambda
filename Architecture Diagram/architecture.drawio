@@ -1,0 +1,93 @@
+<mxfile host="app.diagrams.net" modified="2024-04-07T16:28:51.269Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="sj_5m1-DWkjajetcNgGc" version="24.2.2" type="device">
+  <diagram name="Page-1" id="55NhXBO_p7obKgtiZ0Zg">
+    <mxGraphModel dx="2412" dy="810" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="l1pDx3i7LS8D177NcERp-30" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillStyle=dots;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="120" width="360" height="480" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-21" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;INFRASTRUCTURE&lt;/b&gt;&lt;/font&gt;" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry y="360" width="800" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-10" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;Githuib Actions&lt;br&gt;Workflow creates&lt;br&gt;Docker Image&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="l1pDx3i7LS8D177NcERp-3" target="l1pDx3i7LS8D177NcERp-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-3" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Source Code&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;of Lambda&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.github" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-4" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Amazon ECR&lt;/b&gt;&lt;/font&gt;" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ecr;labelPosition=center;" vertex="1" parent="1">
+          <mxGeometry x="70" y="400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-9" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Docker Image&lt;/b&gt;&lt;/font&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.container_registry_image;labelPosition=center;" vertex="1" parent="1">
+          <mxGeometry x="400" y="160" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-13" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;AWS CloudFomation&lt;br&gt;Stacks&lt;/b&gt;&lt;/font&gt;" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.stack_aws_cloudformation;fillColor=#759C3E;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-360" y="440" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-14" value="&lt;b&gt;CICD&lt;br&gt;Pipeline&lt;br&gt;Stack&lt;br&gt;.yaml&lt;/b&gt;" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document" vertex="1" parent="1">
+          <mxGeometry x="-350" y="160" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="l1pDx3i7LS8D177NcERp-14" target="l1pDx3i7LS8D177NcERp-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-27" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;CICD Pipeline&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;updates Lambda&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;Image&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="l1pDx3i7LS8D177NcERp-17" target="l1pDx3i7LS8D177NcERp-22">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-17" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;AWS CodePipeline&lt;/b&gt;&lt;/font&gt;" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.codepipeline;fillColor=#759C3E;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="440" y="400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-18" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;CFN Template&lt;br&gt;creates CICD&lt;br&gt;Pipeline &amp;amp; other&lt;br&gt;resources&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="l1pDx3i7LS8D177NcERp-13" target="l1pDx3i7LS8D177NcERp-21">
+          <mxGeometry x="-0.3333" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-19" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;CFN File to create&lt;br&gt;Infrastruture&lt;/b&gt;&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="l1pDx3i7LS8D177NcERp-3" target="l1pDx3i7LS8D177NcERp-14">
+          <mxGeometry x="0.25" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-20" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;Codepipeline triggers automatically&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;on image push to ECR&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="l1pDx3i7LS8D177NcERp-4" target="l1pDx3i7LS8D177NcERp-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-22" value="&lt;b&gt;Lambda which performs&amp;nbsp;&lt;/b&gt;&lt;div&gt;&lt;b&gt;PGP Decryption&lt;/b&gt;&lt;/div&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.lambda_function;" vertex="1" parent="1">
+          <mxGeometry x="680" y="400" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-23" value="&lt;b&gt;Artifacts Store&lt;br&gt;S3&lt;/b&gt;" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="140" y="520" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-25" value="&lt;b&gt;PGP Files&lt;br&gt;S3&lt;/b&gt;" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="310" y="520" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-29" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;Pushes Code&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="l1pDx3i7LS8D177NcERp-28" target="l1pDx3i7LS8D177NcERp-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-28" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Developer&lt;/b&gt;&lt;/font&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3D;strokeColor=none;dashed=0;verticalLabelPosition=top;verticalAlign=bottom;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.user;labelPosition=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-32" value="&lt;b&gt;SSM Parameter&lt;/b&gt;&lt;div&gt;&lt;b&gt;Store&lt;/b&gt;&lt;/div&gt;" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.parameter_store;fillColor=#759C3E;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="630" y="520" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-33" value="&lt;b&gt;SQS&lt;/b&gt;" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;" vertex="1" parent="1">
+          <mxGeometry x="470" y="520" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="l1pDx3i7LS8D177NcERp-36" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;Git Actions Workflow&lt;br&gt;pushes Image to ECR&lt;/b&gt;&lt;/font&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="l1pDx3i7LS8D177NcERp-9" target="l1pDx3i7LS8D177NcERp-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="440" y="320" />
+              <mxPoint x="110" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
