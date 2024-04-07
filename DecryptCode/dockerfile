@@ -1,4 +1,3 @@
-# VERSION 3.9+ IS A MUST. Gnupg won't install without it for some reason
 FROM public.ecr.aws/lambda/python:3.9 
 
 COPY requirements.txt ${LAMBDA_TASK_ROOT}
