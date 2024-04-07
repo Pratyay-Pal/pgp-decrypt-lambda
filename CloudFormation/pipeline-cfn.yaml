@@ -1,0 +1,95 @@
+#Change values in Parameter section only. Leave the rest as it is.
+Parameters:
+  ArtifactStoreBucket:
+    Type: String
+    Default: pgp-decrypt-lambda-cfn-pipeline-bucket
+    Description: Artifact store for Codepipeline.
+  
+  SourceArtifactBucket:
+    Type: String
+    Default: pgp-decrypt-lambda-cfn-pipeline-bucket
+    Description: Bucket where Source Artifact for Codepipeline is stored.
+  
+  SourceArtifact:
+    Type: String
+    Default: infrastructure-cfn.zip
+    Description: Source Artifact for Codepipeline. Must be ZIP.
+
+  SourceArtifactCode:
+    Type: String
+    Default: infrastructure-cfn.yaml
+    Description: Infrastruture as code. Must be YAML/JSON.
+
+  #Make sure cloudformation.amazonaws.com and is present in Trusted entities for this Role.
+  CFNRoleARN:
+    Type: String
+    Default: arn:aws:iam::171321171015:role/AWS-CFN-AdminRole
+    Description: Role that Cloudformation assumes when creating resource on AWS.
+  
+  #Make sure codepipeline.amazonaws.com and is present in Trusted entities for this Role.
+  CodePipelineRoleARN:
+    Type: String
+    Default: arn:aws:iam::171321171015:role/AWS-CFN-AdminRole
+    Description: Role that Codepipeline assumes when creating resource on AWS.
+
+  InfrastructureDeploymentStackName:
+    Type: String
+    Default: testInfra
+    Description: Name of stack which will be responsible for Infrastructure Deployment.
+
+Resources:
+  InfrastructureDeployment:
+    Type: AWS::CodePipeline::Pipeline
+    Properties:
+      ArtifactStore:
+        Location: !Ref ArtifactStoreBucket
+        Type: S3
+      Name: pgp-decrypt-infrastructure-deployment
+      PipelineType: V2
+      RoleArn: !Ref CFNRoleARN
+      Stages:
+        - Name: Source
+          Actions:
+            - Name: Source
+              RunOrder: 1
+              ActionTypeId:
+                Category: Source
+                Owner: AWS
+                Provider: S3
+                Version: 1
+              Configuration:
+                PollForSourceChanges: false
+                S3Bucket: !Ref SourceArtifactBucket
+                S3ObjectKey: !Ref SourceArtifact
+              OutputArtifacts: 
+                - Name: SourceArtifact
+        - Name: Deploy
+          Actions:
+            - Name: Create-Change-Set
+              RunOrder: 2
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: 1
+              Configuration:
+                ActionMode: CHANGE_SET_REPLACE
+                ChangeSetName: pipeline-changeset
+                RoleArn: !Ref CodePipelineRoleARN
+                StackName: !Ref InfrastructureDeploymentStackName
+                TemplatePath: !Join [ "::", [ SourceArtifact, !Ref SourceArtifactCode ] ]
+              InputArtifacts:
+                - Name: SourceArtifact
+            - Name: Execute-Change-Set
+              RunOrder: 3
+              ActionTypeId:
+                Category: Deploy
+                Owner: AWS
+                Provider: CloudFormation
+                Version: 1
+              Configuration:
+                ActionMode: CHANGE_SET_EXECUTE
+                ChangeSetName: pipeline-changeset
+                StackName: !Ref InfrastructureDeploymentStackName
+              InputArtifacts:
+                - Name: SourceArtifact
