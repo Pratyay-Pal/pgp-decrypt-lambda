@@ -1,0 +1,36 @@
+name: Push Image to ECR
+run-name: ${{ github.actor }} Create Img, push to ECR
+on:
+  push:
+    branches:
+      - 'master'
+jobs:
+  Explore-GitHub-Actions:
+    name: Github Actions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses : actions/checkout@v3
+        with:
+          repository: 'Pratyay-Pal/pgp-decrypt-lambda'
+
+      - name: secret key check in
+        uses: aws-actions/configure-aws-credentials@v1
+        with:          
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: 'us-east-1'
+
+      - name: ecr login
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: build img, push to ecr
+        env:
+          ECR_REGISTRY: ${{ steps.ecr-login.outputs.registry }}
+          ECR_REPOSITORY: decrypt-file
+          IMAGE_TAG: latest
+        run: |
+          cd Code
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
