@@ -47,6 +47,11 @@ Parameters:
     Default: testInfra
     Description: Name of stack which will be responsible for Infrastructure Deployment.
 
+  LambdaFunctionName:
+    Type: String
+    Default: pgpDecryptionDocker
+    Description: Name of the Lambda which is responsible for PGP Decryption.
+
 Resources:
   ArtifactS3Bucket:
     Type: AWS::S3::Bucket
@@ -55,6 +60,15 @@ Resources:
       VersioningConfiguration:
         Status: Enabled
     DeletionPolicy: Retain
+  
+  LambdaPGPDecryption:
+    Type: AWS::Lambda::Function
+    Properties:
+      BucketName: !Ref ArtifactStoreBucketName
+      VersioningConfiguration:
+        Status: Enabled
+    DeletionPolicy: Retain
+
 
   PGPS3Bucket:
     Type: AWS::S3::Bucket
@@ -76,7 +90,7 @@ Resources:
       Stages:
         - Name: Source
           Actions:
-            - Name: Source
+            - Name: ECR-Change-Source
               RunOrder: 1
               ActionTypeId:
                 Category: Source
@@ -90,31 +104,12 @@ Resources:
                 - Name: SourceArtifact
         - Name: Deploy
           Actions:
-            - Name: Create-Change-Set
+            - Name: Update-Lambda
               RunOrder: 2
               ActionTypeId:
-                Category: Deploy
+                Category: Invoke
                 Owner: AWS
-                Provider: CloudFormation
+                Provider: Lambda
                 Version: 1
               Configuration:
-                ActionMode: CHANGE_SET_REPLACE
-                ChangeSetName: pipeline-changeset
-                RoleArn: !Ref CodePipelineRoleARN
-                StackName: !Ref InfrastructureDeploymentStackName
-                TemplatePath: !Join [ "::", [ SourceArtifact, !Ref SourceArtifactCode ] ]
-              InputArtifacts:
-                - Name: SourceArtifact
-            - Name: Execute-Change-Set
-              RunOrder: 3
-              ActionTypeId:
-                Category: Deploy
-                Owner: AWS
-                Provider: CloudFormation
-                Version: 1
-              Configuration:
-                ActionMode: CHANGE_SET_EXECUTE
-                ChangeSetName: pipeline-changeset
-                StackName: !Ref InfrastructureDeploymentStackName
-              InputArtifacts:
-                - Name: SourceArtifact
+                FunctionName: !Ref LambdaFunctionName
