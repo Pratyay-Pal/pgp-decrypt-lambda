@@ -3,7 +3,7 @@ import boto3
 import json
 
 #User Defined Values
-QueueName="ProcessFiles"
+QueueName="DecryptedFiles"
 PGPPrivateKeyLocation='PGPPrivate'
 PassphraseLocation='PGPpassphrase'
 
